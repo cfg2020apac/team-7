@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:team7_app/components/buttons.dart';
-import 'package:team7_app/views/caregiverList.dart';
+import 'package:team7_app/views/ClientCaregiver.dart';
 
-class CaregiverCard {
-  static getCaregiverCard(context, String clientname, String sessionNum) {
+class CaregiverCard extends StatelessWidget {
+  final String clientID_caregiverID;
+
+  CaregiverCard(this.clientID_caregiverID);
+
+  @override
+  Widget build(context) {
+    // retrieve data from database using above id
+
+    String name = "test";
+    String field = "field";
+    String status = "status";
+
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: RaisedButton(
@@ -14,12 +24,16 @@ class CaregiverCard {
         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
         textColor: Colors.white,
         color: Colors.blue[600],
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ClientCaregiver(clientID_caregiverID)),
+          );
+        },
         child: Container(
-          // decoration: BoxDecoration(
-          // border: Border(bottom: BorderSide(color: Colors.grey[100]),top: BorderSide(color: Colors.grey[100]),left: BorderSide(color: Colors.grey[100]),right: BorderSide(color: Colors.grey[100]))),
-          padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-          height: 160,
+          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+          height: 80,
           child: Column(
             children: <Widget>[
               Row(
@@ -34,20 +48,23 @@ class CaregiverCard {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text('Name: ' + clientname,
+                              child: Text('Name: ' + name,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontSize: 20)))),
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text('Session No: ' + sessionNum,
+                              child: Text('Field: ' + field,
+                                  style: TextStyle(fontSize: 20)))),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              child: Text('Status: ' + status,
                                   style: TextStyle(fontSize: 20)))),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Button.getChoiceButton(context, 10, "View Details", CaregiverList()),
             ],
           ),
         ),

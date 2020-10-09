@@ -17,22 +17,36 @@ class CaregiverList extends StatelessWidget {
                 children: <Widget>[
                   Button.getProfileButton(context),
                   SizedBox(width: 10),
-                  Text("All Caregivers",
-                      style: TextStyle(
-                        fontSize: 40,
-                        decoration: TextDecoration.underline,
-                      )),
+                  Column(children: [
+                    Row(children: <Widget>[
+                      Text("Client Name: Client",
+                        style: TextStyle(
+                          fontSize: 20,
+                          )),
+                    ],),
+                    Row(children: <Widget>[
+                      Text("Client Gender: Male",
+                        style: TextStyle(
+                          fontSize: 20,
+                        )),
+                    ],),
+                    Row(children: <Widget>[
+                      Text("Client Age: 45",
+                        style: TextStyle(
+                          fontSize: 20,
+                        )),
+                    ],)
+                  ],)
                 ],
               ),
               // care giver card
-                            SizedBox(height: 10),
-              CaregiverCard.getCaregiverCard(context, "Career Coach", "1"),
               SizedBox(height: 10),
-              CaregiverCard.getCaregiverCard(context, "HDB Admin", "2"),
+              CaregiverCard("1"),
               SizedBox(height: 10),
-              CaregiverCard.getCaregiverCard(context, "Lawyer", "3"),
-              Row(
-              )
+              CaregiverCard("2"),
+              SizedBox(height: 10),
+              CaregiverCard("3"),
+              Row()
             ]),
           ),
         )));
