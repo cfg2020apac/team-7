@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:team7_app/components/firebase/getField.dart';
+import 'package:team7_app/components/firestoreFunc.dart';
 import 'package:team7_app/views/ClientCaregiver.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CaregiverCard extends StatelessWidget {
   final String clientID_caregiverID;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   CaregiverCard(this.clientID_caregiverID);
 
@@ -63,6 +67,8 @@ class CaregiverCard extends StatelessWidget {
                                   style: TextStyle(fontSize: 20)))),
                     ],
                   ),
+                  // GetField(
+                  //     collection: "caregiver", documentId: "cindy@gmail.com"),
                 ],
               ),
             ],
