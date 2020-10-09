@@ -7,25 +7,26 @@
  */
 import 'package:flutter/material.dart';
 import 'package:team7_app/views/text_field.dart';
+import 'package:team7_app/views/clientList.dart';
 
-class DisplayForm extends StatefulWidget {
+class LoginForm extends StatefulWidget {
   State createState() => LoginPageState();
 }
 
-class LoginPageState extends State<DisplayForm> {
+class LoginPageState extends State<LoginForm> {
   final formKey = GlobalKey<FormState>();
   var _username = new TextEditingController();
   var _password = new TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[50],
-        body: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).requestFocus(new FocusNode());
-            },
+        body: Center(
+            // GestureDetector(
+            //     onTap: () {
+            //       FocusScope.of(context).requestFocus(new FocusNode());
+            //     },
             child: Container(
                 child: MediaQuery.removePadding(
                     context: context,
@@ -35,13 +36,11 @@ class LoginPageState extends State<DisplayForm> {
                       SizedBox(
                         height: 10,
                       ),
-                      
                       Padding(
                           padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                           child: Container(
                               child: Center(
-                                  child: Text(
-                                      "Login Here!",
+                                  child: Text("Login Here!",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 20,
@@ -84,11 +83,11 @@ class LoginPageState extends State<DisplayForm> {
                                       borderRadius:
                                           BorderRadius.circular(22.0)),
                                   onPressed: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //       builder: (context) => HomeScreen()),
-                                    // );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ClientList()),
+                                    );
                                   },
                                   color: Colors.blue[600],
                                   child: Center(
