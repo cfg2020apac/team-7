@@ -1,0 +1,157 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+class ClientInfoSessionPage extends StatefulWidget {
+  State createState() => ClientInfoPage();
+}
+
+
+class ClientInfoPage extends State<ClientInfoSessionPage> {
+  final formKey = GlobalKey<FormState>();
+
+  String _firstName = 'First';
+  String _lastName = 'Last';
+  String _date = DateFormat('yMd').format(new DateTime.now());
+
+  List<Session> _getMeetingHistory() {
+    List<Session> sessions = [];
+    Session session1 = new Session('Session 1', 'Completed');
+    Session session2 = new Session('Session 2', 'New');
+    sessions.add(session1);
+    sessions.add(session2);
+    print(sessions);
+    print(session1);
+    return sessions;
+  }
+
+  Widget build(BuildContext context) {
+    var sessions = _getMeetingHistory();
+    final List<int> colorCodes = <int>[600, 500, 100];
+
+    return Scaffold(
+        backgroundColor: Colors.grey[50],
+        body: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(new FocusNode());
+            },
+
+            child: Container(
+                child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView(
+                        children: <Widget>[
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(30.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 50,
+                                        ),
+                                        CircleAvatar(
+                                          radius: 100,
+                                          backgroundImage: NetworkImage(
+                                              'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(children: <Widget>[
+                                          Text('$_firstName',
+                                              style: new TextStyle(
+                                                  fontSize: 40, color: Colors.blue[400])),
+                                          Text(' $_lastName',
+                                              style: new TextStyle(
+                                                  fontSize: 40,
+                                                  color: Colors.blue[400],
+                                                  fontWeight: FontWeight.bold))
+                                        ], mainAxisAlignment: MainAxisAlignment.center),
+                                        SizedBox(
+                                          height: 40,
+                                        ),
+                                        Column(children: <Widget>[
+                                          Row(
+                                            children: [
+                                              Text("Gender: ",
+                                                  style: new TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.bold)),
+                                              Text("$_date",
+                                                  style: new TextStyle(
+                                                      fontSize: 18, color: Colors.black)
+                                              ),
+                                              SizedBox(
+                                                height: 30,
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text("Date of Birth: ",
+                                                  style: new TextStyle(
+                                                      fontSize: 18,
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.bold)),
+                                              Text("10/10/1997 (x years old)",
+                                                  style: new TextStyle(
+                                                      fontSize: 18, color: Colors.black)
+                                              ),
+                                              SizedBox(
+                                                height: 30,
+                                              )
+                                            ],
+                                          )
+                                        ]),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text("Meeting History",
+                                          style: new TextStyle(
+                                              fontSize: 26, color: Colors.black,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 50,
+                            color: Colors.amber[600],
+                            child: const Center(child: Text('Entry A')),
+                          ),
+                          Container(
+                            height: 50,
+                            color: Colors.amber[500],
+                            child: const Center(child: Text('Entry B')),
+                          ),
+                          Container(
+                            height: 50,
+                            color: Colors.amber[100],
+                            child: const Center(child: Text('Entry C')),
+                          ),
+                        ])
+                    ))
+            ));
+  }
+}
+
+class Session {
+  final String sessionNumber;
+  final String sessionStatus;
+  Session(this.sessionNumber, this.sessionStatus);
+}
+
+
