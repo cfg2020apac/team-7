@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:team7_app/views/addClient.dart';
 import 'package:team7_app/views/clientList.dart';
-import 'package:team7_app/views/welcome_screen.dart';
+// import 'package:team7_app/views/welcome_screen.dart';
 
 class Button {
   static getChoiceButton(context, double widthBtn, String text, Object o) {
@@ -80,7 +81,7 @@ class Button {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => WelcomeScreen()),
+              MaterialPageRoute(builder: (context) => AddClientForm()),
             );
           }),
     );

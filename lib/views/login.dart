@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:team7_app/views/text_field.dart';
 import 'package:team7_app/views/clientList.dart';
 
-class DisplayForm extends StatefulWidget {
+class LoginForm extends StatefulWidget {
   State createState() => LoginPageState();
 }
 
-class LoginPageState extends State<DisplayForm> {
+class LoginPageState extends State<LoginForm> {
   final formKey = GlobalKey<FormState>();
   var _username = new TextEditingController();
   var _password = new TextEditingController();
