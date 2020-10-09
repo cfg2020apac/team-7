@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
-// import 'package:team7_app/components/careGiverCard.dart';
+import 'package:team7_app/components/caregiverCard.dart';
 
-class CareGiverList extends StatelessWidget {
+class CaregiverList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blue[600],
@@ -17,7 +17,7 @@ class CareGiverList extends StatelessWidget {
                 children: <Widget>[
                   Button.getProfileButton(context),
                   SizedBox(width: 10),
-                  Text("All Clients",
+                  Text("All Caregivers",
                       style: TextStyle(
                         fontSize: 40,
                         decoration: TextDecoration.underline,
@@ -25,6 +25,14 @@ class CareGiverList extends StatelessWidget {
                 ],
               ),
               // care giver card
+                            SizedBox(height: 10),
+              CaregiverCard.getCaregiverCard(context, "Career Coach", "1"),
+              SizedBox(height: 10),
+              CaregiverCard.getCaregiverCard(context, "HDB Admin", "2"),
+              SizedBox(height: 10),
+              CaregiverCard.getCaregiverCard(context, "Lawyer", "3"),
+              Row(
+              )
             ]),
           ),
         )));
