@@ -4,7 +4,7 @@ import 'package:team7_app/components/buttons.dart';
 import 'package:team7_app/components/clientCard.dart';
 // import 'package:team7_app/views/firebasetry.dart';
 
-class ClientList extends StatelessWidget {
+class ResolvedCasesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
@@ -22,9 +22,10 @@ class ClientList extends StatelessWidget {
                     SizedBox(width: 10),
                     Text("All Clients",
                         style: TextStyle(
-                            fontSize: 40,
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue[600])),
+                          fontSize: 40,
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue[600]
+                        )),
                   ],
                 ),
                 // Container(child: LoadDataFromFirestore()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/views/addClient.dart';
+import 'package:team7_app/views/caseManagerInfoPage.dart';
 import 'package:team7_app/views/clientList.dart';
 // import 'package:team7_app/views/welcome_screen.dart';
 
@@ -81,7 +82,7 @@ class Button {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ClientList()),
+              MaterialPageRoute(builder: (context) => CaseManagerInfoPage()),
             );
           }),
     );
