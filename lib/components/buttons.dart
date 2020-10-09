@@ -60,7 +60,7 @@ class Button {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ClientList()),
+              MaterialPageRoute(builder: (context) => AddClientForm()),
             );
           }),
     );
@@ -81,7 +81,7 @@ class Button {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AddClientForm()),
+              MaterialPageRoute(builder: (context) => ClientList()),
             );
           }),
     );
