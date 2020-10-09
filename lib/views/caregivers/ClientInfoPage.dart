@@ -27,15 +27,12 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
 
   Widget build(BuildContext context) {
     var sessions = _getMeetingHistory();
-    final List<int> colorCodes = <int>[600, 500, 100];
-
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
             onTap: () {
               FocusScope.of(context).requestFocus(new FocusNode());
             },
-
             child: Container(
                 child: MediaQuery.removePadding(
                     context: context,
@@ -127,21 +124,75 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                               ),
                             ],
                           ),
-                          Container(
-                            height: 50,
-                            color: Colors.amber[600],
-                            child: const Center(child: Text('Entry A')),
-                          ),
-                          Container(
-                            height: 50,
-                            color: Colors.amber[500],
-                            child: const Center(child: Text('Entry B')),
-                          ),
-                          Container(
-                            height: 50,
-                            color: Colors.amber[100],
-                            child: const Center(child: Text('Entry C')),
-                          ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                              physics: ScrollPhysics(),
+                              itemCount: sessions.length,
+                              itemBuilder: (BuildContext context, index) {
+                                return ListTile(
+                                  title: Column(
+                                    children: <Widget>[
+                                      Divider(height: 10.0,),
+                                      Row(children: [
+                                        Column(children: <Widget>[
+                                          SizedBox(height: 10.0,),
+                                          Text("10/10/2020",
+                                            style: new TextStyle(
+                                                fontSize: 18, color: Colors.black,
+                                                fontWeight: FontWeight.normal
+                                            ),
+                                          ),
+                                        ],),
+                                        SizedBox(width: 30.0,),
+                                        Column(children: <Widget>[
+                                          SizedBox(height: 10.0,),
+                                          Text(sessions[index].sessionNumber,
+                                            style: new TextStyle(
+                                                fontSize: 18, color: Colors.black,
+                                                fontWeight: FontWeight.normal
+                                            ),
+                                          ),
+                                        ],),
+                                        SizedBox(width: 40.0,),
+                                        Column(children: <Widget>[
+                                          SizedBox(height: 10.0,),
+                                          SizedBox(
+                                            width: 100.0,
+                                            child: RaisedButton(
+                                              onPressed: null,
+                                              color: Colors.green,
+                                                child: Text(sessions[index].sessionStatus,
+                                                  style: new TextStyle(
+                                                      fontSize: 14, color: Colors.black,
+                                                      fontWeight: FontWeight.normal
+                                                  ),
+                                                ),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(18.0)
+                                                ),
+                                            ),
+                                          ),
+                                        ],)
+                                      ],)
+                                    ],
+                                  )
+                                );
+                          }),
+                          // Container(
+                          //   height: 50,
+                          //   color: Colors.amber[600],
+                          //   child: const Center(child: Text('Entry A')),
+                          // ),
+                          // Container(
+                          //   height: 50,
+                          //   color: Colors.amber[500],
+                          //   child: const Center(child: Text('Entry B')),
+                          // ),
+                          // Container(
+                          //   height: 50,
+                          //   color: Colors.amber[100],
+                          //   child: const Center(child: Text('Entry C')),
+                          // ),
                         ])
                     ))
             ));
