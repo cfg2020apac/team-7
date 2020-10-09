@@ -17,7 +17,10 @@ class WelcomeScreen extends StatelessWidget {
                 height: 340,
                 child: Column(
                   children: <Widget>[
-                    Text('This is Home Screen', style: TextStyle(fontSize: 20),),
+                    Text(
+                      'This is Home Screen',
+                      style: TextStyle(fontSize: 20),
+                    ),
                     SizedBox(height: 30),
                     Button.getChoiceButton(
                         context, 70, "Go to Login Screen", DisplayForm()),
