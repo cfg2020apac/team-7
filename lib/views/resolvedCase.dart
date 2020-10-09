@@ -4,7 +4,7 @@ import 'package:team7_app/components/buttons.dart';
 import 'package:team7_app/components/clientCard.dart';
 // import 'package:team7_app/views/firebasetry.dart';
 
-class ClientList extends StatelessWidget {
+class ResolvedCasesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
