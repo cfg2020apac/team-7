@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:team7_app/views/caregivers/ClientSessionPage.dart';
 
 class ClientInfoSessionPage extends StatefulWidget {
-  final String data;
+  final data;
 
   ClientInfoSessionPage({this.data});
 
@@ -14,27 +14,58 @@ class ClientInfoSessionPage extends StatefulWidget {
 
 class ClientInfoPage extends State<ClientInfoSessionPage> {
   final formKey = GlobalKey<FormState>();
-  final String data;
+  final data;
   ClientInfoPage({this.data});
-  String _firstName = 'First';
-  String _lastName = 'Last';
   String _date = DateFormat('yMd').format(new DateTime.now());
 
-  List<Session> _getMeetingHistory() {
+  List<Session> _getMeetingHistory(clientId) {
     List<Session> sessions = [];
-    Session session1 = new Session('Session 1', 'Completed');
-    Session session2 = new Session('Session 2', 'New');
-    sessions.add(session1);
-    sessions.add(session2);
-    print(sessions);
-    print(session1);
-    return sessions;
+    if (clientId == 'CWxLDCJ2SFk4VOzRD8Jn') {
+      Session session1 = new Session('Session 1', 'Completed', '30-01-2020',
+          'Good progress in mental health');
+      Session session2 = new Session('Session 2', 'Completed', '27-03-2020',
+          'All good, no need for follow up');
+      sessions.add(session1);
+      sessions.add(session2);
+      return sessions;
+    } else if (clientId == 'D5Vf3rEMYomeUlu97iHx') {
+      Session session1 = new Session(
+          'Session 1', 'Completed', '20-09-2020', 'Good learning progress');
+      Session session2 = new Session('Session 2', 'New', '25-09-2020', '');
+      sessions.add(session1);
+      sessions.add(session2);
+      return sessions;
+    } else {
+      Session session1 = new Session('Session 1', 'Completed', '30-09-2020',
+          'Completed initial phase of vetting.');
+      Session session2 = new Session('Session 2', 'Alert', '10-10-2020',
+          'Missing financial documents which needs to be submitted');
+      sessions.add(session1);
+      sessions.add(session2);
+      return sessions;
+    }
   }
+
+  ClientInfo _getClientInfo(String clientId, Session sessionObj) {
+    if (clientId == 'CWxLDCJ2SFk4VOzRD8Jn')
+      return ClientInfo(sessionObj, clientId, 'M', '30-12-1990', 'John', 'Tan',
+          '5EbY0ULbXOPEon4bezlt');
+    else if (clientId == 'D5Vf3rEMYomeUlu97iHx')
+      return ClientInfo(
+          sessionObj, clientId, 'M', '30-12-1990', 'Adam', 'Tan', '');
+    else
+      return ClientInfo(
+          sessionObj, clientId, 'F', '30-12-1990', 'Amy', 'Loh', '');
+  }
+
+  // String _firstName = 'First';
+  // String _lastName = 'Last';
 
   Widget build(BuildContext context) {
     print("data");
     print(data);
-    var sessions = _getMeetingHistory();
+    var sessions = _getMeetingHistory(data.clientId);
+    // var clientInfo = _getClientInfo(data.clientId, sessions);
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
@@ -70,11 +101,19 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                                     ),
                                     Row(
                                         children: <Widget>[
-                                          Text('$_firstName',
+                                          Text(
+                                              _getClientInfo(data.clientId,
+                                                      sessions[0])
+                                                  .firstName,
                                               style: new TextStyle(
                                                   fontSize: 40,
                                                   color: Colors.blue[400])),
-                                          Text(' $_lastName',
+                                          Text(
+                                              ' ' +
+                                                  _getClientInfo(data.clientId,
+                                                          sessions[0])
+                                                      .lastName
+                                                      .toUpperCase(),
                                               style: new TextStyle(
                                                   fontSize: 40,
                                                   color: Colors.blue[400],
@@ -93,7 +132,10 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                                                   fontSize: 18,
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold)),
-                                          Text("$_date",
+                                          Text(
+                                              _getClientInfo(data.clientId,
+                                                      sessions[0])
+                                                  .gender,
                                               style: new TextStyle(
                                                   fontSize: 18,
                                                   color: Colors.black)),
@@ -109,7 +151,10 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                                                   fontSize: 18,
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold)),
-                                          Text("10/10/1997 (x years old)",
+                                          Text(
+                                              _getClientInfo(data.clientId,
+                                                      sessions[0])
+                                                  .dateOfBirth,
                                               style: new TextStyle(
                                                   fontSize: 18,
                                                   color: Colors.black)),
@@ -147,7 +192,9 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             CareGiverClientSessionPage(
-                                                data: sessions[index]))),
+                                                data: _getClientInfo(
+                                                    data.clientId,
+                                                    sessions[index])))),
                                 title: Column(
                                   children: <Widget>[
                                     Divider(
@@ -161,7 +208,7 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                                               height: 10.0,
                                             ),
                                             Text(
-                                              "10/10/2020",
+                                              sessions[index].sessionDate,
                                               style: new TextStyle(
                                                   fontSize: 18,
                                                   color: Colors.black,
@@ -226,8 +273,23 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
   }
 }
 
+class ClientInfo {
+  Session session;
+  final String clientId;
+  final String gender;
+  final String dateOfBirth;
+  final String firstName;
+  final String lastName;
+  final String hdbMatching;
+  ClientInfo(this.session, this.clientId, this.gender, this.dateOfBirth,
+      this.firstName, this.lastName, this.hdbMatching);
+}
+
 class Session {
   final String sessionNumber;
   final String sessionStatus;
-  Session(this.sessionNumber, this.sessionStatus);
+  final String sessionDate;
+  final String sessionNotes;
+  Session(this.sessionNumber, this.sessionStatus, this.sessionDate,
+      this.sessionNotes);
 }

@@ -22,28 +22,33 @@ class ClientListState extends State<CareGiverClientListPage> {
   List<ClientMeetings> _getClientMeetings() {
     List<ClientMeetings> meetings = [];
     ClientMeetings meeting1 = new ClientMeetings(
-      'Client 1',
-      '11/9/2020',
+      'CWxLDCJ2SFk4VOzRD8Jn',
+      'John Tan',
+      '30/01/2020',
     );
-    ClientMeetings meeting2 = new ClientMeetings('Client 2', '12/09/2020');
+    ClientMeetings meeting2 =
+        new ClientMeetings('D5Vf3rEMYomeUlu97iHx', 'Adam Tan', '30/01/2020');
+    ClientMeetings meeting3 =
+        new ClientMeetings('QDB1eCqSKrLyuUwzTqb2', 'Amy Loh', '30/01/2020');
     meetings.add(meeting1);
     meetings.add(meeting2);
-    print(meetings);
-    print(meeting1);
+    meetings.add(meeting3);
     return meetings;
   }
 
   List<ClientDetails> _getClientDetails() {
     List<ClientDetails> clients = [];
     ClientDetails client1 = new ClientDetails(
-      '1',
-      'Client 2',
+      'CWxLDCJ2SFk4VOzRD8Jn',
+      'John Tan',
     );
-    ClientDetails client2 = new ClientDetails('2', 'Client 2');
+    ClientDetails client2 =
+        new ClientDetails('D5Vf3rEMYomeUlu97iHx', 'Adam Tan');
+    ClientDetails client3 =
+        new ClientDetails('QDB1eCqSKrLyuUwzTqb2', 'Amy Loh');
     clients.add(client1);
     clients.add(client2);
-    print(clients);
-    print(client1);
+    clients.add(client3);
     return clients;
   }
 
@@ -74,7 +79,7 @@ class ClientListState extends State<CareGiverClientListPage> {
                                   Align(
                                       alignment: Alignment.center,
                                       child: Container(
-                                        child: Text('Welcome Care Giver',
+                                        child: Text('Welcome Cindy Lim',
                                             style: new TextStyle(
                                                 fontSize: 30,
                                                 color: Colors.blue[400],
@@ -123,7 +128,8 @@ class ClientListState extends State<CareGiverClientListPage> {
                                                 clientMeetings[index]
                                                     .clientDate,
                                                 ClientInfoSessionPage(
-                                                    data: "data 1"));
+                                                    data:
+                                                        clientMeetings[index]));
                                           }))
                                       : (_selectedOption == "View All Clients")
                                           ? (ListView.builder(
@@ -154,9 +160,10 @@ class ClientListState extends State<CareGiverClientListPage> {
 }
 
 class ClientMeetings {
+  final String clientId;
   final String clientName;
   final String clientDate;
-  ClientMeetings(this.clientName, this.clientDate);
+  ClientMeetings(this.clientId, this.clientName, this.clientDate);
 }
 
 class ClientDetails {

@@ -14,16 +14,17 @@ class ClientSessionState extends State<CareGiverClientSessionPage> {
   var _assignAction = new TextEditingController();
   final data;
 
-  String _firstName = 'First';
-  String _lastName = 'Last';
-  String _date = DateFormat('yMd').format(new DateTime.now());
-  String _selectedOption;
   ClientSessionState({this.data});
+  String _selectedOption;
 
   @override
   Widget build(BuildContext context) {
-    print("data in session");
-    print(data.sessionStatus);
+    String _firstName = data.firstName;
+    String _lastName = data.lastName;
+    String _date = data
+        .session.sessionDate; //DateFormat('yMd').format(new DateTime.now());
+    String notes = data.session.sessionNotes;
+
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: GestureDetector(
@@ -58,7 +59,7 @@ class ClientSessionState extends State<CareGiverClientSessionPage> {
                                 Text('$_firstName',
                                     style: new TextStyle(
                                         fontSize: 40, color: Colors.blue[400])),
-                                Text(' $_lastName',
+                                Text(' $_lastName'.toUpperCase(),
                                     style: new TextStyle(
                                         fontSize: 40,
                                         color: Colors.blue[400],
@@ -94,17 +95,26 @@ class ClientSessionState extends State<CareGiverClientSessionPage> {
                                             offset: Offset(0, 10))
                                       ]),
                                   child: Column(children: <Widget>[
-                                    TextFields.getTextField(
-                                        _notes,
-                                        TextInputType.text,
-                                        TextInputAction.done,
-                                        "Notes"),
+                                    // TextFields.getTextField(
+                                    //     _notes,
+                                    //     TextInputType.text,
+                                    //     TextInputAction.done,
+                                    //     "Notes"),
+                                    TextFormField(
+                                      decoration: const InputDecoration(
+                                          labelText: "Notes"),
+                                      initialValue: notes,
+                                      style: new TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.grey[400],
+                                      ),
+                                    ),
                                   ])),
                               SizedBox(
                                 height: 20,
                               ),
                               DropdownButton<String>(
-                                  hint: Text('Assign Locations',
+                                  hint: Text('Assign Status',
                                       style: new TextStyle(
                                           fontSize: 18,
                                           color: Colors.grey[400])),
