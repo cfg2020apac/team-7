@@ -1,60 +1,21 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/material.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class LoadDataFromFirestore extends StatefulWidget {
-//   @override
-//   _LoadDataFromFirestoreState createState() => _LoadDataFromFirestoreState();
-// }
 
-// class _LoadDataFromFirestoreState extends State<LoadDataFromFirestore> {
-//   @override
-//   void initState() {
-//     super.initState();
-//     getDriversList().then((results) {
-//       setState(() {
-//         querySnapshot = results;
+// final databaseReference = FirebaseFirestore.instance;
+
+// void createRecord() async {
+//   await databaseReference.collection("books")
+//       .docs("1")
+//       .setData({
+//         'title': 'Mastering Flutter',
+//         'description': 'Programming Guide for Dart'
 //       });
-//     });
-//   }
 
-//   QuerySnapshot querySnapshot;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: _showDrivers(),
-//     );
-//   }
-
-// //build widget as prefered
-// //i'll be using a listview.builder
-//   Widget _showDrivers() {
-//     //check if querysnapshot is null
-   
-//     if (querySnapshot != null) {
-//       return ListView.builder(
-//         primary: false,
-//         itemCount: querySnapshot.docs.length,
-//         padding: EdgeInsets.all(12),
-//         itemBuilder: (context, i) {
-//           return Column(
-//             children: <Widget>[
-// //load data into widgets
-//               Text("${querySnapshot.docs[i]['clients']}"),
-//               Text("${querySnapshot.docs[i]['firstName']}"),
-//               Text("${querySnapshot.docs[i]['lastName']}"),
-//             ],
-//           );
-//         },
-//       );
-//     } else {
-//       return Center(
-//         child: CircularProgressIndicator(),
-//       );
-//     }
-//   }
-
-//   //get firestore instance
-//   getDriversList() async {
-//     return await FirebaseFirestore.instance.collection('caregiver').get();
-//   }
+//   DocumentReference ref = await databaseReference.collection("books")
+//       .add({
+//         'title': 'Flutter in Action',
+//         'description': 'Complete Programming Guide to learn Flutter'
+//       });
+//   print(ref.documentID);
 // }

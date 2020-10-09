@@ -6,6 +6,7 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
+import 'package:team7_app/views/registerPage.dart';
 import 'package:team7_app/views/text_field.dart';
 import 'package:team7_app/views/clientList.dart';
 
@@ -94,7 +95,26 @@ class LoginPageState extends State<LoginForm> {
                                       child: Text("Login",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20))))
+                                              fontSize: 20)))),
+                              SizedBox(height: 10),
+                               MaterialButton(
+                                  height: 50,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(22.0)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => RegisterPage()),
+                                    );
+                                  },
+                                  color: Colors.blue[600],
+                                  child: Center(
+                                      child: Text("Register",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20)))),   
                             ],
                           ))
                     ]))))));
