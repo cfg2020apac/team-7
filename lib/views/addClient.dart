@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/views/clientList.dart';
 import 'package:team7_app/views/text_field.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddClientForm extends StatefulWidget {
   State createState() => RegistrationPageState();

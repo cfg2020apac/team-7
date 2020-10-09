@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "374614773011",
+    "firebase_url": "https://team7try2.firebaseio.com",
+    "project_id": "team7try2",
+    "storage_bucket": "team7try2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374614773011:android:2f4429935b20d719d15ee6",
+        "android_client_info": {
+          "package_name": "com.example.team7_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374614773011-qrln39s5d66k8pshfkpppv1fc44et5rp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIhfDLe7OPmc9FHKUiAdcNPnWGBmqP30M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374614773011-qrln39s5d66k8pshfkpppv1fc44et5rp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
