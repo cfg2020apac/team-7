@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:team7_app/components/firebase/getField.dart';
-import 'package:team7_app/components/firestoreFunc.dart';
 import 'package:team7_app/views/ClientCaregiver.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:team7_app/views/clientCaregiver.dart';
 
 class CaregiverCard extends StatelessWidget {
   final String clientID_caregiverID;

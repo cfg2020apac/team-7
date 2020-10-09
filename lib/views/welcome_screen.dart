@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
 import 'package:team7_app/components/caregiverCard.dart';
+import 'package:team7_app/views/caregivers/ClientInfoPage.dart';
 import 'package:team7_app/views/caregivers/ClientList.dart';
 import 'package:team7_app/views/caregivers/ClientSessionPage.dart';
 import 'package:team7_app/views/login.dart';
@@ -16,7 +17,7 @@ class WelcomeScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(children: <Widget>[
               Container(
-                height: 500,
+                height: 600,
                 child: Column(
                   children: <Widget>[
                     Text(
@@ -37,6 +38,8 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(height: 30),
                     Button.getChoiceButton(context, 70, "Client List Page",
                         CareGiverClientListPage()),
+                    Button.getChoiceButton(context, 70,
+                        "Client Info Session Page", ClientInfoSessionPage()),
                   ],
                 ),
               ),
