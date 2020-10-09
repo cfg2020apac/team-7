@@ -22,10 +22,9 @@ class ClientList extends StatelessWidget {
                     SizedBox(width: 10),
                     Text("All Clients",
                         style: TextStyle(
-                          fontSize: 40,
-                          decoration: TextDecoration.underline,
-                          color: Colors.blue[600]
-                        )),
+                            fontSize: 40,
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue[600])),
                   ],
                 ),
                 // Container(child: LoadDataFromFirestore()),

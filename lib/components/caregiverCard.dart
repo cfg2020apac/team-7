@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:team7_app/components/firebase/addField.dart';
+import 'package:team7_app/components/firebase/getField.dart';
 import 'package:team7_app/views/clientCaregiver.dart';
 
 class CaregiverCard extends StatelessWidget {
@@ -46,28 +47,31 @@ class CaregiverCard extends StatelessWidget {
                     size: 50,
                   ),
                   SizedBox(width: 30),
-                  Column(
-                    children: <Widget>[
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                              child: Text('Name: ' + name,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 20)))),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                              child: Text('Field: ' + field,
-                                  style: TextStyle(fontSize: 20)))),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                              child: Text('Status: ' + status,
-                                  style: TextStyle(fontSize: 20)))),
-                    ],
-                  ),
-                  // GetField(
-                  //     collection: "caregiver", documentId: "cindy@gmail.com"),
+                  // Column(
+                  // children: <Widget>[
+                  //   Align(
+                  //       alignment: Alignment.centerLeft,
+                  //       child: Container(
+                  //           child: Text('Name: ' + name,
+                  //               textAlign: TextAlign.left,
+                  //               style: TextStyle(fontSize: 20)))),
+                  //   Align(
+                  //       alignment: Alignment.centerLeft,
+                  //       child: Container(
+                  //           child: Text('Field: ' + field,
+                  //               style: TextStyle(fontSize: 20)))),
+                  //   Align(
+                  //       alignment: Alignment.centerLeft,
+                  //       child: Container(
+                  //           child: Text('Status: ' + status,
+                  //               style: TextStyle(fontSize: 20)))),
+                  // ],
+                  // ),
+                  // Container(
+                  //     child:
+                  //         GetField.getWidget("caregiver", "cindy@gmail.com")),
+                  GetField(
+                      collection: "caregiver", documentId: "cindy@gmail.com"),
                 ],
               ),
             ],

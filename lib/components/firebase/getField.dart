@@ -30,7 +30,9 @@ class GetField extends StatelessWidget {
     );
   }
 
-  // call getWidget(collection: "caregiver", documentId: "cindy@gmail.com")
+  // not getWidget(collection: "caregiver", documentId: "cindy@gmail.com")
+  //
+  // call getWidget("caregiver", "cindy@gmail.com"), not the above
   static Widget getWidget(String collection, String documentId) {
     CollectionReference users =
         FirebaseFirestore.instance.collection(collection);
@@ -45,7 +47,7 @@ class GetField extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data.data();
-          return Text("Full Name: ${data['firstName']}");
+          return Text("Full Name: ${data['lastName']}");
         }
 
         return Text("loading");
