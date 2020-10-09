@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:team7_app/components/firebase/addField.dart';
 import 'package:team7_app/components/firebase/getField.dart';
-import 'package:team7_app/views/clientCaregiver.dart';
+import 'package:team7_app/views/CaseManagerClientInfoPage.dart';
 
 class CaregiverCard extends StatelessWidget {
   final String clientID_caregiverID;
@@ -32,7 +31,7 @@ class CaregiverCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ClientCaregiver(clientID_caregiverID)),
+                builder: (context) => CaseManagerClientInfoSessionPage()),
           );
         },
         child: Container(
