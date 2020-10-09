@@ -48,7 +48,8 @@ class ClientCard {
                 ],
               ),
               SizedBox(height: 20),
-              Button.getChoiceButton(context, 10, "View Details", CaregiverList()),
+              Button.getChoiceButton(
+                  context, 10, "View Details", CaregiverList()),
             ],
           ),
         ),
@@ -56,7 +57,9 @@ class ClientCard {
     );
   }
 
-  static getClientSchedule(context, String clientname, String date) {
+  static getClientSchedule(context, String clientname, String date, callback) {
+    print("context");
+    print(context);
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: RaisedButton(
@@ -101,7 +104,7 @@ class ClientCard {
               ),
               SizedBox(height: 20),
               Button.getChoiceButton(
-                  context, 10, "View Meeting Details", ClientList()),
+                  context, 10, "View Meeting Details", callback),
             ],
           ),
         ),
