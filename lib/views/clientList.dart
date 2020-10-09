@@ -7,7 +7,7 @@ import 'package:team7_app/components/clientCard.dart';
 class ClientList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Colors.grey[50],
         body: Center(
           child: MediaQuery.removePadding(
             context: context,
@@ -23,6 +23,8 @@ class ClientList extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 40,
                           decoration: TextDecoration.underline,
+                          color: Colors.blue[400],
+                          fontWeight: FontWeight.bold,
                         )),
                   ],
                 ),

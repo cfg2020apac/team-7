@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
 import 'package:team7_app/components/caregiverCard.dart';
+import 'package:team7_app/views/CaseManagerClientInfoPage.dart';
 import 'package:team7_app/views/caregivers/ClientInfoPage.dart';
 import 'package:team7_app/views/caregivers/ClientList.dart';
 import 'package:team7_app/views/caregivers/ClientSessionPage.dart';
 import 'package:team7_app/views/login.dart';
+
+import 'clientList.dart';
 
 class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -38,8 +41,15 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(height: 30),
                     Button.getChoiceButton(context, 70, "Client List Page",
                         CareGiverClientListPage()),
+                    Button.getChoiceButton(
+                        context, 70, "Case List Page", ClientList()),
                     Button.getChoiceButton(context, 70,
                         "Client Info Session Page", ClientInfoSessionPage()),
+                    Button.getChoiceButton(
+                        context,
+                        70,
+                        "Case Manager Client Info Session Page",
+                        CaseManagerClientInfoSessionPage()),
                   ],
                 ),
               ),

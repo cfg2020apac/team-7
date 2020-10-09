@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team7_app/views/CaseManagerClientInfoPage.dart';
 import 'package:team7_app/views/clientCaregiver.dart';
 
 class CaregiverCard extends StatelessWidget {
@@ -28,7 +29,7 @@ class CaregiverCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ClientCaregiver(clientID_caregiverID)),
+                builder: (context) => CaseManagerClientInfoSessionPage()),
           );
         },
         child: Container(
