@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:team7_app/views/caregivers/ClientSessionPage.dart';
 
 class ClientInfoSessionPage extends StatefulWidget {
-  State createState() => ClientInfoPage();
+  final String data;
+
+  ClientInfoSessionPage({this.data});
+
+  State createState() => ClientInfoPage(data: this.data);
 }
 
 class ClientInfoPage extends State<ClientInfoSessionPage> {
   final formKey = GlobalKey<FormState>();
-
+  final String data;
+  ClientInfoPage({this.data});
   String _firstName = 'First';
   String _lastName = 'Last';
   String _date = DateFormat('yMd').format(new DateTime.now());
@@ -26,6 +32,8 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
   }
 
   Widget build(BuildContext context) {
+    print("data");
+    print(data);
     var sessions = _getMeetingHistory();
     return Scaffold(
         backgroundColor: Colors.grey[50],
@@ -134,77 +142,85 @@ class ClientInfoPage extends State<ClientInfoSessionPage> {
                           itemCount: sessions.length,
                           itemBuilder: (BuildContext context, index) {
                             return ListTile(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CareGiverClientSessionPage(
+                                                data: sessions[index]))),
                                 title: Column(
-                              children: <Widget>[
-                                Divider(
-                                  height: 10.0,
-                                ),
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 10.0,
-                                        ),
-                                        Text(
-                                          "10/10/2020",
-                                          style: new TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.normal),
-                                        ),
-                                      ],
+                                  children: <Widget>[
+                                    Divider(
+                                      height: 10.0,
                                     ),
-                                    SizedBox(
-                                      width: 30.0,
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 10.0,
-                                        ),
-                                        Text(
-                                          sessions[index].sessionNumber,
-                                          style: new TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.normal),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 40.0,
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 10.0,
-                                        ),
-                                        SizedBox(
-                                          width: 100.0,
-                                          child: RaisedButton(
-                                            onPressed: null,
-                                            color: Colors.green,
-                                            child: Text(
-                                              sessions[index].sessionStatus,
+                                    Row(
+                                      children: [
+                                        Column(
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 10.0,
+                                            ),
+                                            Text(
+                                              "10/10/2020",
                                               style: new TextStyle(
-                                                  fontSize: 14,
+                                                  fontSize: 18,
                                                   color: Colors.black,
                                                   fontWeight:
                                                       FontWeight.normal),
                                             ),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        18.0)),
-                                          ),
+                                          ],
                                         ),
+                                        SizedBox(
+                                          width: 30.0,
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 10.0,
+                                            ),
+                                            Text(
+                                              sessions[index].sessionNumber,
+                                              style: new TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.black,
+                                                  fontWeight:
+                                                      FontWeight.normal),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 40.0,
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 10.0,
+                                            ),
+                                            SizedBox(
+                                              width: 100.0,
+                                              child: RaisedButton(
+                                                onPressed: null,
+                                                color: Colors.green,
+                                                child: Text(
+                                                  sessions[index].sessionStatus,
+                                                  style: new TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.normal),
+                                                ),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0)),
+                                              ),
+                                            ),
+                                          ],
+                                        )
                                       ],
                                     )
                                   ],
-                                )
-                              ],
-                            ));
+                                ));
                           }),
                     ])))));
   }

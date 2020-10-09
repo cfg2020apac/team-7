@@ -3,20 +3,27 @@ import 'package:team7_app/views/text_field.dart';
 import 'package:intl/intl.dart';
 
 class CareGiverClientSessionPage extends StatefulWidget {
-  State createState() => ClientSessionState();
+  final data;
+  CareGiverClientSessionPage({this.data});
+  State createState() => ClientSessionState(data: this.data);
 }
 
 class ClientSessionState extends State<CareGiverClientSessionPage> {
   final formKey = GlobalKey<FormState>();
   var _notes = new TextEditingController();
   var _assignAction = new TextEditingController();
+  final data;
+
   String _firstName = 'First';
   String _lastName = 'Last';
   String _date = DateFormat('yMd').format(new DateTime.now());
   String _selectedOption;
+  ClientSessionState({this.data});
 
   @override
   Widget build(BuildContext context) {
+    print("data in session");
+    print(data.sessionStatus);
     return Scaffold(
         backgroundColor: Colors.grey[50],
         body: GestureDetector(

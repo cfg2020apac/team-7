@@ -7,6 +7,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/clientCard.dart';
+import 'package:team7_app/views/caregivers/ClientInfoPage.dart';
 
 class CareGiverClientListPage extends StatefulWidget {
   State createState() => ClientListState();
@@ -82,16 +83,32 @@ class ClientListState extends State<CareGiverClientListPage> {
                                     ? (Column(children: <Widget>[
                                         SizedBox(height: 10),
                                         ClientCard.getClientSchedule(
-                                            context, "Client 1", "11/9/2020"),
+                                            context,
+                                            "Client 1",
+                                            "11/9/2020",
+                                            ClientInfoSessionPage(
+                                                data: "data 1")),
                                         SizedBox(height: 10),
                                         ClientCard.getClientSchedule(
-                                            context, "Client 2", "12/9/2020"),
+                                            context,
+                                            "Client 2",
+                                            "12/9/2020",
+                                            ClientInfoSessionPage(
+                                                data: "data 2")),
                                         SizedBox(height: 10),
                                         ClientCard.getClientSchedule(
-                                            context, "Client 3", "13/9/2020"),
+                                            context,
+                                            "Client 3",
+                                            "13/9/2020",
+                                            ClientInfoSessionPage(
+                                                data: "data 3")),
                                         SizedBox(height: 10),
                                         ClientCard.getClientSchedule(
-                                            context, "Client 4", "14/9/2020"),
+                                            context,
+                                            "Client 4",
+                                            "14/9/2020",
+                                            ClientInfoSessionPage(
+                                                data: "data 4")),
                                       ]))
                                     : (_selectedOption == "View All Clients")
                                         ? (Column(children: <Widget>[
