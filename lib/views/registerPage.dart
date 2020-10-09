@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:team7_app/views/clientList.dart';
 import 'package:team7_app/views/text_field.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   State createState() => RegistrationPageState();
@@ -37,7 +38,8 @@ class RegistrationPageState extends State<RegisterPage> {
                           padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
                           child: Container(
                               child: Center(
-                                  child: Text("Please fill in the below details",
+                                  child: Text(
+                                      "Please fill in the below details",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 20,
@@ -116,8 +118,7 @@ class RegistrationPageState extends State<RegisterPage> {
                                         _email,
                                         TextInputType.text,
                                         TextInputAction.done,
-                                        "Occupation"),
-                                    
+                                        "Email"),
                                     TextFields.getTextField(
                                         _note,
                                         TextInputType.text,
@@ -133,11 +134,18 @@ class RegistrationPageState extends State<RegisterPage> {
                                       borderRadius:
                                           BorderRadius.circular(22.0)),
                                   onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ClientList()),
-                                    );
+                                    registerUser(
+                                        _username.text,
+                                        _password.text,
+                                        _contact.text,
+                                        _email.text,
+                                        _note.text,
+                                        _value);
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //       builder: (context) => ClientList()),
+                                    // );
                                   },
                                   color: Colors.blue[600],
                                   child: Center(
@@ -148,5 +156,35 @@ class RegistrationPageState extends State<RegisterPage> {
                             ],
                           ))
                     ]))))));
+  }
+
+  static registerUser(String username, String password, String contact,
+      String email, String note, String value) {
+    try {
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    if (value == "Case Manager") {
+      FirebaseFirestore.instance
+          .collection("serviceWorker")
+          .doc(email)
+          .set({"username": username, "email": email, "note": note});
+    } else if (value == "Caregiver") {
+      FirebaseFirestore.instance
+          .collection("caregiver")
+          .doc(email)
+          .set({"username": username, "email": email, "note": note});
+    } else {
+      print('Error value');
+    }
   }
 }
