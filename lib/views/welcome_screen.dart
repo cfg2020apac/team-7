@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
+import 'package:team7_app/views/caregivers/ClientList.dart';
 import 'package:team7_app/views/caregivers/ClientSessionPage.dart';
 import 'package:team7_app/views/login.dart';
 
@@ -24,13 +25,16 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(height: 30),
                     Button.getChoiceButton(
                         context, 70, "Go to Login Screen", LoginForm()),
-                        // context, 70, "Go to Login Screen", DisplayForm()),
+                    // context, 70, "Go to Login Screen", DisplayForm()),
                     SizedBox(height: 30),
                     Button.getChoiceButton(
                         context,
                         70,
                         "Care Giver Client Session Page",
                         CareGiverClientSessionPage()),
+                    SizedBox(height: 30),
+                    Button.getChoiceButton(context, 70, "Client List Page",
+                        CareGiverClientListPage()),
                   ],
                 ),
               ),
