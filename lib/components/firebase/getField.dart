@@ -30,6 +30,9 @@ class GetField extends StatelessWidget {
     );
   }
 
+  // not getWidget(collection: "caregiver", documentId: "cindy@gmail.com")
+  //
+  // call getWidget("caregiver", "cindy@gmail.com"), not the above
   static Widget getWidget(String collection, String documentId) {
     CollectionReference users =
         FirebaseFirestore.instance.collection(collection);
