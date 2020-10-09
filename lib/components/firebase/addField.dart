@@ -8,6 +8,7 @@ class AddField {
     FirebaseFirestore.instance.collection("caregiver").add({"name": "test"});
   }
 
+  // specific documentid
   static setField() {
     FirebaseFirestore.instance
         .collection("caregiver")
