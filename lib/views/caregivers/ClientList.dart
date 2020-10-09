@@ -138,7 +138,10 @@ class ClientListState extends State<CareGiverClientListPage> {
                                                     clientDetails[index]
                                                         .clientName,
                                                     clientDetails[index]
-                                                        .clientId);
+                                                        .clientId,
+                                                    "View Details",
+                                                    "caregiver",
+                                                    "cindy@gmail.com");
                                               }))
                                           : Column(),
                                   SizedBox(

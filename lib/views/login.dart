@@ -6,6 +6,7 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
+import 'package:team7_app/components/firebase/getField.dart';
 import 'package:team7_app/views/registerPage.dart';
 import 'package:team7_app/views/text_field.dart';
 import 'package:team7_app/views/clientList.dart';
@@ -97,7 +98,7 @@ class LoginPageState extends State<LoginForm> {
                                               color: Colors.white,
                                               fontSize: 20)))),
                               SizedBox(height: 10),
-                               MaterialButton(
+                              MaterialButton(
                                   height: 50,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
@@ -114,7 +115,7 @@ class LoginPageState extends State<LoginForm> {
                                       child: Text("Register",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20)))),   
+                                              fontSize: 20)))),
                             ],
                           ))
                     ]))))));
