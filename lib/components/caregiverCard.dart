@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
 import 'package:team7_app/views/caregiverList.dart';
-import 'package:team7_app/views/clientList.dart';
 
-class ClientCard {
-  static getClientCard(context, String clientname, String clientid) {
+class CaregiverCard {
+  static getCaregiverCard(context, String clientname, String sessionNum) {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: RaisedButton(
@@ -41,7 +40,7 @@ class ClientCard {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text('ID: ' + clientid,
+                              child: Text('Session No: ' + sessionNum,
                                   style: TextStyle(fontSize: 20)))),
                     ],
                   ),
