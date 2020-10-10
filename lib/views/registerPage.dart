@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:team7_app/views/caregivers/ClientList.dart';
 import 'package:team7_app/views/clientList.dart';
 import 'package:team7_app/views/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -69,9 +70,9 @@ class RegistrationPageState extends State<RegisterPage> {
                                         "Name"),
                                     TextFields.getTextField(
                                         _password,
-                                        TextInputType.number,
+                                        TextInputType.visiblePassword,
                                         TextInputAction.done,
-                                        "Date of Birth"),
+                                        "Password"),
                                     Container(
                                         padding: EdgeInsets.all(8.0),
                                         decoration: BoxDecoration(
@@ -135,6 +136,7 @@ class RegistrationPageState extends State<RegisterPage> {
                                           BorderRadius.circular(22.0)),
                                   onPressed: () {
                                     registerUser(
+                                        context,
                                         _username.text,
                                         _password.text,
                                         _contact.text,
@@ -158,7 +160,7 @@ class RegistrationPageState extends State<RegisterPage> {
                     ]))))));
   }
 
-  static registerUser(String username, String password, String contact,
+  static registerUser(context, String username, String password, String contact,
       String email, String note, String value) {
     try {
       FirebaseAuth.instance
@@ -178,11 +180,15 @@ class RegistrationPageState extends State<RegisterPage> {
           .collection("serviceWorker")
           .doc(email)
           .set({"username": username, "email": email, "note": note});
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ClientList()));
     } else if (value == "Caregiver") {
       FirebaseFirestore.instance
           .collection("caregiver")
           .doc(email)
           .set({"username": username, "email": email, "note": note});
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => CareGiverClientListPage()));
     } else {
       print('Error value');
     }

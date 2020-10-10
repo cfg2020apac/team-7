@@ -46,31 +46,31 @@ class CaregiverCard extends StatelessWidget {
                     size: 50,
                   ),
                   SizedBox(width: 30),
-                  // Column(
-                  // children: <Widget>[
-                  //   Align(
-                  //       alignment: Alignment.centerLeft,
-                  //       child: Container(
-                  //           child: Text('Name: ' + name,
-                  //               textAlign: TextAlign.left,
-                  //               style: TextStyle(fontSize: 20)))),
-                  //   Align(
-                  //       alignment: Alignment.centerLeft,
-                  //       child: Container(
-                  //           child: Text('Field: ' + field,
-                  //               style: TextStyle(fontSize: 20)))),
-                  //   Align(
-                  //       alignment: Alignment.centerLeft,
-                  //       child: Container(
-                  //           child: Text('Status: ' + status,
-                  //               style: TextStyle(fontSize: 20)))),
-                  // ],
-                  // ),
+                  Column(
+                    children: <Widget>[
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              child: Text('Name: ' + name,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 20)))),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              child: Text('Field: ' + field,
+                                  style: TextStyle(fontSize: 20)))),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              child: Text('Status: ' + status,
+                                  style: TextStyle(fontSize: 20)))),
+                    ],
+                  ),
                   // Container(
                   //     child:
                   //         GetField.getWidget("caregiver", "cindy@gmail.com")),
-                  GetField(
-                      collection: "caregiver", documentId: "cindy@gmail.com"),
+                  // GetField(
+                  //     collection: "caregiver", documentId: "cindy@gmail.com"),
                 ],
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 /**
  * This class implements the one-time registration of the user when they launch
  * the application for the first time and input details which include Height,
@@ -6,6 +7,7 @@
  * @author Jay Gupta
  */
 import 'package:flutter/material.dart';
+import 'package:team7_app/views/caregivers/ClientList.dart';
 import 'package:team7_app/views/registerPage.dart';
 import 'package:team7_app/views/text_field.dart';
 import 'package:team7_app/views/clientList.dart';
@@ -83,12 +85,37 @@ class LoginPageState extends State<LoginForm> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(22.0)),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ClientList()),
-                                    );
+                                  onPressed: () async {
+                                    try {
+                                      UserCredential userCredential =
+                                          await FirebaseAuth.instance
+                                              .signInWithEmailAndPassword(
+                                                  email: _username.text,
+                                                  password: _password.text);
+
+                                      String email = _username.text;
+                                      if (email.substring(0, 1) == "1") {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CareGiverClientListPage()));
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ClientList()),
+                                        );
+                                      }
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'user-not-found') {
+                                        print('No user found for that email.');
+                                      } else if (e.code == 'wrong-password') {
+                                        print(
+                                            'Wrong password provided for that user.');
+                                      }
+                                    }
                                   },
                                   color: Colors.blue[600],
                                   child: Center(
@@ -97,7 +124,7 @@ class LoginPageState extends State<LoginForm> {
                                               color: Colors.white,
                                               fontSize: 20)))),
                               SizedBox(height: 10),
-                               MaterialButton(
+                              MaterialButton(
                                   height: 50,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
@@ -114,7 +141,7 @@ class LoginPageState extends State<LoginForm> {
                                       child: Text("Register",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20)))),   
+                                              fontSize: 20)))),
                             ],
                           ))
                     ]))))));
