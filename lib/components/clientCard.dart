@@ -42,8 +42,9 @@ class ClientCard {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text(' User ID: ' + clientid,
-                                  style: TextStyle(fontSize: 20)))),
+                            child: Text(' User ID: ' + clientid,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 15)))),
                     ],
                   ),
                 ],
