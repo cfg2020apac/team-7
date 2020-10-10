@@ -23,7 +23,22 @@ class RegistrationPageState extends State<AddClientForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[50],
+      appBar: AppBar(
+        title: Text("Add Client",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 35,
+          fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.blue[600],
+        brightness: Brightness.light,
+        elevation: 0,
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.blue[600],
+            height: 4.0,
+          ),
+        preferredSize: Size.fromHeight(4.0))
+      ),
         body: GestureDetector(
             onTap: () {
               FocusScope.of(context).requestFocus(new FocusNode());

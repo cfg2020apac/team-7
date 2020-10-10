@@ -47,7 +47,10 @@ class GetField extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data.data();
-          return Text("Full Name: ${data['lastName']}");
+          return Text(
+            "First Name: ${data['firstName']}",
+            style: TextStyle(fontSize: 20),
+          );
         }
 
         return Text("loading");

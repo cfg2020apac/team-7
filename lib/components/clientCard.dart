@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:team7_app/components/buttons.dart';
+import 'package:team7_app/components/firebase/getField.dart';
 import 'package:team7_app/views/caregiverList.dart';
 import 'package:team7_app/views/clientList.dart';
 
 class ClientCard {
-  static getClientCard(context, String clientname, String clientid) {
+  static getClientCard(context, String clientname, String clientid, String text,
+      String collection, String document) {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: RaisedButton(
@@ -35,21 +37,21 @@ class ClientCard {
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text('Name: ' + clientname,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 20)))),
+                            child: GetField.getWidget(collection, document),
+                          )),
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                              child: Text('ID: ' + clientid,
-                                  style: TextStyle(fontSize: 20)))),
+                            child: Text(' User ID: ' + clientid,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 15)))),
                     ],
                   ),
                 ],
               ),
               SizedBox(height: 20),
               Button.getChoiceButton(
-                  context, 10, "View Details", CaregiverList()),
+                  context, 10, text, CaregiverList()),
             ],
           ),
         ),
